@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @SecurityRequirement(name = "techgeeknext-api")
 public class CarController {
 
+    //Создаем экземпляр бина UserService c помощью аннотации @Autowired
     @Autowired
     CarService carService;
 

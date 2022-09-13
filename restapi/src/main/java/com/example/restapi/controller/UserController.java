@@ -1,6 +1,7 @@
 package com.example.restapi.controller;
 
 import com.example.restapi.dto.UserDto;
+import com.example.restapi.exception.MyEntityNotFoundException;
 import com.example.restapi.service.UserService;
 import com.example.restapi.user.User;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -24,14 +25,15 @@ public class UserController {
     //Создаем http-запрос GET, в котором переменной {id} присваевается значение и передается в метод
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Integer id) {
-        //Возврат значения переопределенного метода getUserById в классе UserServiceImpl
-        return userService.getUserById(id);
+        //Возврат значения реализуймого метода getUserById в классе UserServiceImpl
+        //если по id нет User, то выбрасываем ошибку ("User is not found, id="+id)
+        return userService.getUserById(id).orElseThrow(() -> new MyEntityNotFoundException(id));
     }
 
     @PostMapping("/post")
-    //Описываем метод addUser, в который с помощью аннотации @RequestBody помещается объект user c типом данных User
+    //Описываем метод addUser, в который с помощью аннотации @RequestBody помещается объект user(тело) c типом данных User
     public User addUser(@RequestBody User user) {
-        //Возврат метода переопределенного метода addUser, в который передается объект user
+        //Возврат метода реализуймого метода addUser, в который передается объект user
         return userService.addUser(user);
     }
 
@@ -42,11 +44,11 @@ public class UserController {
         return userService.deleteUserById(id);
     }
 
-    //Создаем http-запрос PUT
+    //Создаем http-запрос PUT(изменение User по Id)
     @PutMapping("/putuser/{id}")
     //Описание метода putUser
     public User putUser(@PathVariable Integer id, @RequestBody User user) {
-        //Возврат переопределенного метода putUser в классе UserServiceImpl
+        //Возврат реализуймого метода putUser в классе UserServiceImpl
         return userService.putUser(id, user);
     }
 

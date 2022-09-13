@@ -13,6 +13,7 @@ import java.util.List;
 @SecurityRequirement(name = "techgeeknext-api")
 public class CardController {
 
+    //Создаем экземпляр бина UserService c помощью аннотации @Autowired
     @Autowired
     CardService cardService;
 
