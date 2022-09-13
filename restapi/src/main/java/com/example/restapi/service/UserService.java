@@ -4,6 +4,7 @@ import com.example.restapi.dto.UserDto;
 import com.example.restapi.user.User;
 
 import java.util.List;
+import java.util.Optional;
 
 //Создание интерейса UserService
 public interface UserService {
@@ -17,7 +18,7 @@ public interface UserService {
     User putUser(Integer id, User user);
 
     //Создание метода getUserById типа User с входящим параметром id типа Integer
-    User getUserById(Integer id);
+    Optional<User> getUserById(Integer id);
 
     //Создание метода getUserByFlow типа String с входящими парматрами flow и slovo типа String
     String getUserByFlow(String flow, String slovo);

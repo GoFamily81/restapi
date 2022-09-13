@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 //Объявление класса UserServiceImpl - Сервисом
 @Service
@@ -39,13 +40,13 @@ public class UserServiceImpl implements UserService {
         user.setId(id);
         userRepository.save(user);
         //Возврат строки:User was changed и значение переменной id
-        return getUserById(id);
+        return getUserById(id).get();
     }
 
     @Override
     //Реализация метода getUserById с входящим параметром id типом данных Integer
-    public User getUserById(Integer id) {
-        return userRepository.getById(id);
+    public Optional<User> getUserById(Integer id) {
+        return userRepository.getUserById(id);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByIdDto() {
-        User user = userRepository.getUserById(1);
+        User user = userRepository.getUserById(1).get();
         return UserMapper.bigUserToSmallUserDto(user, new UserDto());
     }
 

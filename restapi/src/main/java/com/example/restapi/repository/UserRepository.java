@@ -4,8 +4,10 @@ import com.example.restapi.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-     User getUserById(Integer id);
+     Optional<User> getUserById(Integer id);
 }

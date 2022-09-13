@@ -5,6 +5,7 @@ import com.example.restapi.exception.MyEntityNotFoundException;
 import com.example.restapi.service.UserService;
 import com.example.restapi.user.User;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,12 +16,12 @@ import java.util.List;
 //@RequestMapping аннотация, которая отображает http-запрос /user
 @RequestMapping("/user")
 @SecurityRequirement(name = "techgeeknext-api")
-
+//@RequiredArgsConstructor аннотация, которая создает конструктор для private final UserService userService (строка 24)
+@RequiredArgsConstructor
 //Создание класса UserController
 public class UserController {
-    //Создаем экземпляр бина UserService c помощью аннотации @Autowired
-    @Autowired
-    UserService userService;
+    //Создаем экземпляр бина UserService(интерфейс) c помощью аннотации @RequiredArgsConstructor
+    private final UserService userService;
 
     //Создаем http-запрос GET, в котором переменной {id} присваевается значение и передается в метод
     @GetMapping("/{id}")
