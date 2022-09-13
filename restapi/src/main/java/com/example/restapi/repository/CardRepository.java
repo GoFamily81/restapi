@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CardRepository extends JpaRepository<Card,Integer> {
+public interface CardRepository extends JpaRepository<Card, Integer> {
+
     Card getById(Integer id);
 
     @Query(value = "SELECT c from Card c where c.id > 3 ")

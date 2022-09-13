@@ -6,7 +6,6 @@ import com.example.restapi.service.UserService;
 import com.example.restapi.user.User;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,8 +59,9 @@ public class UserController {
         //Возврат значения метода userService.getAllUsers()
         return userService.getAllUsers();
     }
+
     @GetMapping("/getdto")
-    public UserDto getUserByIdDto(){
+    public UserDto getUserByIdDto() {
         return userService.getUserByIdDto();
     }
 }

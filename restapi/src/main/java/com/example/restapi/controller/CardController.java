@@ -44,7 +44,7 @@ public class CardController {
     }
 
     @GetMapping("/sql")
-    public List<Card> getListCard(){
+    public List<Card> getListCard() {
         return cardService.getListCard();
     }
 }

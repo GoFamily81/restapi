@@ -12,11 +12,8 @@ import java.util.List;
 public class UserDto {
 
     private String userName;
-
     private String surName;
-
     private String bankName;
-
     private List<String> carBrand;
 
 }
